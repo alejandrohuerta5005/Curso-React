@@ -1,6 +1,6 @@
 // Profile Card — practical task (React Native basics)
 // Follow the steps in README.md and build your solution in this file.
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, Plataform } from 'react-native';
 
 // Data to display. Do not change it.
 const BIO =
@@ -20,14 +20,15 @@ export default function App() {
       <View style={styles.card}>
         
         {/* TODO STEP 1: build the card with View and Text (name, role, location, bio) */}
-        <View style={styles.infoContainer}>
+        <View style={styles.headerTextContainer}>
           <Text style={styles.name}>Alex Rivera</Text>
           <Text style={styles.role}>Mobile Developer</Text>
           <Text style={styles.location}>Lisbon, Portugal</Text>
-          <Text style={styles.bio} numberOfLines={3}>
-            {BIO}
-          </Text>
         </View>
+
+        <Text style={styles.bio} numberOfLines={3}>
+          {BIO}
+        </Text>
 
         {/* TODO STEP 2: add the banner and the avatar with Image */}
         {/* Banner en la parte superior de la tarjeta */}
@@ -37,14 +38,6 @@ export default function App() {
           resizeMode="cover" 
         />
 
-        {/* Contenedor del avatar con margen negativo para solapar el banner */}
-        <View style={styles.avatarContainer}>
-          <Image 
-            source={require('./assets/avatar.png')} 
-            style={styles.avatar} 
-          />
-        </View>
-
         {/* TODO STEP 3: header row and stats row with Flexbox */}
         <View style={styles.headerRow}>
           <View style={styles.avatarContainer}>
@@ -52,7 +45,6 @@ export default function App() {
               source={require('./assets/avatar.png')} 
               style={styles.avatar} 
             />
-            {/* Aquí irá el badge del Step 4 */}
             <View style={styles.onlineBadge} />
           </View>
         </View>
@@ -73,14 +65,6 @@ export default function App() {
         </View>
 
         {/* TODO STEP 4: online badge, skill tags and action buttons (layout) */}
-        <View style={styles.avatarContainer}>
-          <Image 
-            source={require('./assets/avatar.png')} 
-            style={styles.avatar} 
-          />
-          <View style={styles.onlineBadge} />
-        </View>
-
         <View style={styles.tags}>
           {SKILLS.map((skill, index) => (
             <View key={index} style={styles.tag}>
