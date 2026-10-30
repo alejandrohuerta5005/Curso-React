@@ -1,6 +1,6 @@
 // Profile Card — practical task (React Native basics)
 // Follow the steps in README.md and build your solution in this file.
-import { View, Text, Image, StyleSheet, Plataform } from 'react-native';
+import { View, Text, Image, StyleSheet, Platform } from 'react-native';
 
 // Data to display. Do not change it.
 const BIO =
@@ -19,36 +19,37 @@ export default function App() {
     <View style={styles.screen}>
       <View style={styles.card}>
         
-        {/* TODO STEP 1: build the card with View and Text (name, role, location, bio) */}
-        <View style={styles.headerTextContainer}>
-          <Text style={styles.name}>Alex Rivera</Text>
-          <Text style={styles.role}>Mobile Developer</Text>
-          <Text style={styles.location}>Lisbon, Portugal</Text>
-        </View>
-
-        <Text style={styles.bio} numberOfLines={3}>
-          {BIO}
-        </Text>
-
-        {/* TODO STEP 2: add the banner and the avatar with Image */}
-        {/* Banner en la parte superior de la tarjeta */}
+        {/* 1. BANNER (STEP 2): Va hasta arriba de la tarjeta */}
         <Image 
           source={require('./assets/banner.png')} 
           style={styles.banner} 
           resizeMode="cover" 
         />
 
-        {/* TODO STEP 3: header row and stats row with Flexbox */}
+        {/* 2. HEADER ROW (STEP 3 & 1): Avatar al lado del nombre, rol y ubicación */}
         <View style={styles.headerRow}>
           <View style={styles.avatarContainer}>
             <Image 
               source={require('./assets/avatar.png')} 
               style={styles.avatar} 
             />
+            {/* STEP 4: Badge online */}
             <View style={styles.onlineBadge} />
+          </View>
+
+          <View style={styles.headerTextContainer}>
+            <Text style={styles.name}>Alex Rivera</Text>
+            <Text style={styles.role}>Mobile Developer</Text>
+            <Text style={styles.location}>Lisbon, Portugal</Text>
           </View>
         </View>
 
+        {/* 3. BIO (STEP 1): Texto descriptivo debajo del header */}
+        <Text style={styles.bio} numberOfLines={3}>
+          {BIO}
+        </Text>
+
+        {/* 4. STATS ROW (STEP 3): Estadísticas con .map() */}
         <View style={styles.statsRow}>
           {STATS.map((stat, index) => (
             <View 
@@ -64,7 +65,7 @@ export default function App() {
           ))}
         </View>
 
-        {/* TODO STEP 4: online badge, skill tags and action buttons (layout) */}
+        {/* 5. TAGS (STEP 4): Etiquetas de habilidades */}
         <View style={styles.tags}>
           {SKILLS.map((skill, index) => (
             <View key={index} style={styles.tag}>
@@ -73,6 +74,7 @@ export default function App() {
           ))}
         </View>
 
+        {/* 6. ACTIONS (STEP 4): Botones de Follow y Message */}
         <View style={styles.actions}>
           <View style={[styles.button, styles.primaryButton]}>
             <Text style={styles.primaryButtonText}>Follow</Text>
@@ -81,8 +83,6 @@ export default function App() {
             <Text style={styles.outlineButtonText}>Message</Text>
           </View>
         </View>
-        
-        {/* TODO STEP 5: polish the styles (colors, typography, shadow) */}
 
       </View>
     </View>
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'flex-end',
     paddingHorizontal: 20,
-    marginTop: -42,
+    marginTop: -15,
   },
   avatarContainer: {
     position: 'relative',
